@@ -1,15 +1,17 @@
 <?php 
 	include ("Framework.php"); 
 	include ("Http.php"); 
+	include ("PDFDocumentos.php"); 
 
 	class Factura
 	{
-		public $DB, $Http;
+		public $DB, $Http, $PDF;
 
 		function __construct()
 		{
 			$this->DB = new DB();
 			$this->Http = new Http();
+			$this->PDF = new PDFDocumentos();
 		}
 
 		public function Enviar($id)
@@ -21,6 +23,25 @@
 			if($factura){
 				$message = "bien";
 				$data = $this->XMLFactura($factura);
+			}else{
+				$message = "Esta factura no existe";
+			}
+			//$factura = $this->Http->get("http://dev.onbeds.co/index.php?r=API/Mis_reservas&id_tercero=14196");
+			return [
+				'error' => $error,
+				'message' => $message,
+				'data' => $factura
+			];
+		}
+
+		public function PDFFactura($id)
+		{
+			$error = true;
+			$message = "";
+			$factura = $this->DB->findBy('facturas07','doc', $id);
+
+			if($factura){
+				return $this->PDF->Factura($factura);
 			}else{
 				$message = "Esta factura no existe";
 			}
