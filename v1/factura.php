@@ -1,15 +1,17 @@
 <?php 
 	include ("Framework.php"); 
 	include ("Http.php"); 
+	include ("Config.php"); 
 
 	class Factura
 	{
-		public $DB, $Http;
+		public $DB, $HTTP, $CONFIG;
 
 		function __construct()
 		{
 			$this->DB = new DB();
-			$this->Http = new Http();
+			$this->HTTP = new Http();
+			$this->CONFIG = new Config();
 		}
 
 		public function Enviar($id)
@@ -24,13 +26,18 @@
 				$message = "Esta factura no existe";
 			}
 
-			$factura = $this->Http->get("http://dev.onbeds.co/index.php?r=API/Mis_reservas&id_tercero=14196");
+			//$factura = $this->HTTP->get("http://dev.onbeds.co/index.php?r=API/Mis_reservas&id_tercero=14196");
 
 			return [
 				'error' => $error,
 				'message' => $message,
 				'data' => $factura
 			];
+		}
+
+		public function XMLFactura($factura)
+		{
+			
 		}
 	}
  ?>
