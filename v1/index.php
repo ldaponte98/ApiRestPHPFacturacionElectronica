@@ -35,6 +35,10 @@
 			$id = $_GET['id']; // Es necesario recibir este campo por get
 			echo json_encode($facturaController->Enviar($id));
 			break;
+		case 'pdf_factura':
+			$id = $_GET['id']; // Es necesario recibir este campo por get
+			echo $facturaController->PDFFactura($id);
+			break;
 
 		default:
 			echo json_encode("Opción no valida");

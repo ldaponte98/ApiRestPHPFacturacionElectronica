@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Factura</title>
+</head>
+<body>
+	<table class="w-100" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="w-30">
+				<img src="https://admin.googleusercontent.com/logo-scs-key1559651" width="auto" height="80">
+			</td>
+			<td class="w-70">
+				<center>
+					<p><b>Nombre empresa</b></p>
+					<p><b>Nit: </b>{nit}</p>
+					<p><b>Direccion: </b>{direccion} <b>Teléfono: </b>{telefono}</p> 
+					<p><b>Email: {email}</b></p> 
+					<br>
+					<p class="small"><b>{texto_informativo}</b></p>
+				</center>
+			</td>
+		</tr>
+	</table>
+	<hr>
+	<table class="w-100" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><b>{tipo_documento}</b></td>
+			<td>{num_documento}</td>
+			<td><b>CLIENTE</b></td>
+			<td>{nombre_cliente}</td>
+			<td><b>DIRECCION</b></td>
+			<td>{direccion_cliente}</td>
+		</tr>
+		<tr>
+			<td><b>FECHA</b></td>
+			<td>{fecha_documento}</td>
+			<td><b>DOCUMENTO</b></td>
+			<td>{identificacion_cliente}</td>
+			<td><b>TELEFONO</b></td>
+			<td>{telefono_cliente}</td>
+		</tr>
+	</table>
+	<hr>
+	<style type="text/css">
+		.w-100{
+			width: 100%;
+		}
+		.w-70{
+			width: 70%;
+		}
+		.w-30{
+			width: 30%;
+		}
+		.flex{
+			display: flex;
+		}
+		p{
+			font-size: 12px;
+		}
+		.small{
+			font-size: 7px;
+		}
+	</style>
+</body>
+</html>
