@@ -13,7 +13,7 @@
 
 		function __construct()
 		{
-			$this->routes = (object) $this->routes;
+			$this->routes = (object) $this->routes; 
 		}
 	}
  ?>
