@@ -8,7 +8,7 @@ class Conexion
 	public $name_database = "apge"; // El nombre de la base de datos 
 	public $conection = null;
 	
-	function __construct()
+	function __construct($name_database =  "apge")
 	{
 		$this->conection = new mysqli($this->server, $this->user, $this->password,$this->name_database);
 		$this->conection->set_charset("utf8");
@@ -20,6 +20,7 @@ class Conexion
 		    //echo 'Conectado  satisfactoriamente al servidor <br />'; 
 		} 
 	}
+
 }
 
 ?>

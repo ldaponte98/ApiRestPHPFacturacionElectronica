@@ -39,6 +39,11 @@
 			$id = $_GET['id']; // Es necesario recibir este campo por get
 			echo $facturaController->PDFFactura($id);
 			break;
+		case 'base64':
+			//$data = $_POST['documento']; 
+			echo json_encode($_POST);//$facturaController->ConvertirBase64($data);
+			break;
+
 
 		default:
 			echo json_encode("Opción no valida");

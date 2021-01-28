@@ -4,8 +4,9 @@
 	class DB
 	{
 		public $conection;
+		public $context; //Base de datos
 
-		function __construct()
+		function __construct($context)
 		{
 			$Conexion = new Conexion();
 			$this->conection = $Conexion->conection;

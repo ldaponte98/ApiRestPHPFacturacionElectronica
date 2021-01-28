@@ -18,9 +18,8 @@ class PDFDocumentos
 		$data["direccion_cliente"] = $factura->doc;
 		$data["fecha_documento"] = $factura->doc;
 		$data["telefono_cliente"] = $factura->doc;
-		$data["identificacion_cliente"] = $factura->
-		$data["texto_informativo"] = "Actividad económica 8621 tarifa Ica 9.66 por mil RESOLUAUTORIZACIÓN CIÓN DIAN DE FACTURACIÓN NO 18762014787909 FECHA 2019-05-28 RANGO DEL 01 A
-10000 PREFIJO IVA RÉGIMEN ESPECIAL NO SOMOS GRANDES CONTRIBUYENTES. Factura impresa por computador por OnBeds S.A.S";
+		$data["identificacion_cliente"] = $factura->doc;
+		$data["texto_informativo"] = $factura->reso;
 
 		$path_view = "Documentos/Factura.html";
 		$html = file_get_contents($path_view);
