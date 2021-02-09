@@ -8,7 +8,7 @@
 
 		function __construct($context)
 		{
-			$Conexion = new Conexion();
+			$Conexion = new Conexion($context);
 			$this->conection = $Conexion->conection;
 		}
 
