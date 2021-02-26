@@ -28,7 +28,7 @@
 			$select = [];
 			$result = $this->conection->query($query);
 			while ($data = $result->fetch_assoc()) {
-				$select[] = $data;
+				$select[] = (object) $data;
 			}
 			return $select;
 		}

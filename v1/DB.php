@@ -10,6 +10,7 @@ class Conexion
 	
 	function __construct($name_database =  "apge")
 	{
+		$this->name_database = $name_database;
 		$this->conection = new mysqli($this->server, $this->user, $this->password,$this->name_database);
 		$this->conection->set_charset("utf8");
 
@@ -17,7 +18,7 @@ class Conexion
 		    die('<strong>No pudo conectarse con el server:</strong> ' . mysql_error()); 
 		}else{ 
 		    // La siguiente linea no es necesaria, simplemente la pondremos ahora para poder observar que la conexión ha sido realizada 
-		    //echo 'Conectado  satisfactoriamente al servidor <br />'; 
+		   //echo 'Conectado  satisfactoriamente al servidor <br />'; 
 		} 
 	}
 

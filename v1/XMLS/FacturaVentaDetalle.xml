@@ -3,7 +3,7 @@
 	<cbc:InvoicedQuantity>{detalle_cantidad}</cbc:InvoicedQuantity>
 	<cbc:LineExtensionAmount currencyID="COP">{detalle_valor_total}</cbc:LineExtensionAmount>
 
-	<cac:AllowanceCharge> <!--DESCUENTOS-->
+	<cac:AllowanceCharge>
 		<cbc:ID>1</cbc:ID>
 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 		<cbc:AllowanceChargeReason>{detalle_motivo_descuento}</cbc:AllowanceChargeReason>
@@ -12,20 +12,8 @@
 		<cbc:BaseAmount currencyID="COP">{detalle_valor_base}</cbc:BaseAmount>
 	</cac:AllowanceCharge>
 
-	<cac:TaxTotal> <!--IMPUESTOS-->
-		<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>			
-		<cac:TaxSubtotal>
-			<cbc:TaxableAmount currencyID="COP">{detalle_valor_base}</cbc:TaxableAmount>
-			<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>
-			<cac:TaxCategory>
-				<cbc:Percent>{detalle_porcentaje_impuesto}</cbc:Percent>
-				<cac:TaxScheme>
-					<cbc:ID>{detalle_codigo_impuesto}</cbc:ID><!-- 01: iva - 04: INC-->
-					<cbc:Name>{detalle_descripcion_impuesto}</cbc:Name>
-				</cac:TaxScheme>
-			</cac:TaxCategory>
-		</cac:TaxSubtotal>
-	</cac:TaxTotal>
+	{xml_impuestos}
+
 	<cac:Item>
 		<cbc:Description>{detalle_producto_descripcion}</cbc:Description>
 		<cac:StandardItemIdentification>

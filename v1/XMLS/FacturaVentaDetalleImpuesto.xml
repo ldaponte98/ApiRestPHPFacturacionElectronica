@@ -1,0 +1,14 @@
+<cac:TaxTotal>
+	<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>			
+	<cac:TaxSubtotal>
+		<cbc:TaxableAmount currencyID="COP">{detalle_valor_base}</cbc:TaxableAmount>
+		<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>
+		<cac:TaxCategory>
+			<cbc:Percent>{detalle_porcentaje_impuesto}</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>{detalle_codigo_impuesto}</cbc:ID>
+				<cbc:Name>{detalle_descripcion_impuesto}</cbc:Name>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:TaxSubtotal>
+</cac:TaxTotal>

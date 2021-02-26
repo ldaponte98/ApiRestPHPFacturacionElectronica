@@ -33,7 +33,10 @@
 	switch ($opcion) {
 		case 'enviar_factura':
 			$id = $_GET['id']; // Es necesario recibir este campo por get
-			echo json_encode($facturaController->Enviar($id));
+			$mes = $_GET['mes']; // Es necesario recibir este campo por get
+			$id_compania = $_GET['id_compania']; // Es necesario recibir este campo por get
+			$ano = $_GET['ano']; // Es necesario recibir este campo por get
+			echo $facturaController->Enviar($id, $mes, $id_compania, $ano);
 			break;
 		case 'pdf_factura':
 			$id = $_GET['id']; // Es necesario recibir este campo por get
@@ -42,6 +45,14 @@
 		case 'base64':
 			//$data = $_POST['documento']; 
 			echo json_encode($_POST);//$facturaController->ConvertirBase64($data);
+			break;
+
+		case 'ver_factura':
+			$id = $_GET['id']; // Es necesario recibir este campo por get
+			$mes = $_GET['mes']; // Es necesario recibir este campo por get
+			$id_compania = $_GET['id_compania']; // Es necesario recibir este campo por get
+			$ano = $_GET['ano']; // Es necesario recibir este campo por get
+			echo $facturaController->VerData($id, $mes, $id_compania, $ano);
 			break;
 
 

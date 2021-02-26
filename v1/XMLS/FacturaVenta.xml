@@ -145,9 +145,7 @@
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
-	<!--formas de pago-->
 	{xml_formas_pago}
-	
 	<cac:TaxTotal>
 		<cbc:TaxAmount currencyID="COP">19000.00</cbc:TaxAmount>
 		<cac:TaxSubtotal>
@@ -168,47 +166,7 @@
 		<cbc:TaxInclusiveAmount currencyID="COP">{total_factura_con_impuesto}</cbc:TaxInclusiveAmount>
 		<cbc:PayableAmount currencyID="COP">{total_pagado}</cbc:PayableAmount>
 	</cac:LegalMonetaryTotal>
-
-	<cac:InvoiceLine><!-- SI HAY VARIOS DETALLES CADA UNO DE ELLOS HACE REFERENCIA A UNA LINEA DE FACTUTA(INVOICELINE)-->
-		<cbc:ID>1</cbc:ID>
-		<cbc:InvoicedQuantity>{detalle_cantidad}</cbc:InvoicedQuantity>
-		<cbc:LineExtensionAmount currencyID="COP">{detalle_valor_total}</cbc:LineExtensionAmount>
-
-		<cac:AllowanceCharge> <!--DESCUENTOS-->
-			<cbc:ID>1</cbc:ID>
-			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-			<cbc:AllowanceChargeReason>{detalle_motivo_descuento}</cbc:AllowanceChargeReason>
-			<cbc:MultiplierFactorNumeric>{detalle_porcentaje_descuento}</cbc:MultiplierFactorNumeric>
-			<cbc:Amount currencyID="COP">{detalle_valor_descuento}</cbc:Amount>
-			<cbc:BaseAmount currencyID="COP">{detalle_valor_base}</cbc:BaseAmount>
-		</cac:AllowanceCharge>
-
-		<cac:TaxTotal> <!--IMPUESTOS-->
-			<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>			
-			<cac:TaxSubtotal>
-				<cbc:TaxableAmount currencyID="COP">{detalle_valor_base}</cbc:TaxableAmount>
-				<cbc:TaxAmount currencyID="COP">{detalle_valor_impuesto}</cbc:TaxAmount>
-				<cac:TaxCategory>
-					<cbc:Percent>{detalle_porcentaje_impuesto}</cbc:Percent>
-					<cac:TaxScheme>
-						<cbc:ID>{detalle_codigo_impuesto}</cbc:ID><!-- 01: iva - 04: INC-->
-						<cbc:Name>{detalle_descripcion_impuesto}</cbc:Name>
-					</cac:TaxScheme>
-				</cac:TaxCategory>
-			</cac:TaxSubtotal>
-		</cac:TaxTotal>
-		<cac:Item>
-			<cbc:Description>{detalle_producto_descripcion}</cbc:Description>
-			<cac:StandardItemIdentification>
-				<cbc:ID schemeID="999">{detalle_producto_codigo}</cbc:ID>
-			</cac:StandardItemIdentification>
-		</cac:Item>
-		<cac:Price>
-			<cbc:PriceAmount currencyID="COP">{detalle_producto_valor}</cbc:PriceAmount>
-			<cbc:BaseQuantity unitCode="EA">{detalle_cantidad}</cbc:BaseQuantity>
-		</cac:Price>
-	</cac:InvoiceLine>
-
+	{xml_detalles}
 	<DATA>
 		<UBL21>true</UBL21>
 		<Partnership>

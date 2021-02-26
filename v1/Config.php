@@ -7,6 +7,7 @@
 		public $software_token = "9334fbf0-4611-494d-9f91-46e2fc8afcd5";
 		public $nit_empresa = "1065566411"; //NIT DE MI EMPRESA
 
+		public $name_database_general = "apge";
 		public $routes = [
 			'enviar_documento' => 'https://apivp.efacturacadena.com/staging/vp-hab/documentos/proceso/alianzas'
 		];

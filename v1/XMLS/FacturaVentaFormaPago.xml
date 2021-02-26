@@ -1,5 +1,5 @@
 <cac:PaymentMeans>
-	<cbc:ID>{tipo_forma_pago}</cbc:ID><!--1 es efectivo y 2 credito-->
-	<cbc:PaymentMeansCode>{forma_pago}</cbc:PaymentMeansCode><!--efectivo:10 - banco:42 - credito:30,-->
+	<cbc:ID>{tipo_forma_pago}</cbc:ID>
+	<cbc:PaymentMeansCode>{forma_pago}</cbc:PaymentMeansCode>
 	<cbc:PaymentID>{descripcion_forma_pago}</cbc:PaymentID>
 </cac:PaymentMeans>
