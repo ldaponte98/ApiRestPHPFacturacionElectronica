@@ -5,7 +5,7 @@ require_once '../vendor/autoload.php';
 class PDFDocumentos
 {
 
-	public function Factura($factura)
+	public function Factura($factura, $data_company)
 	{
 		$data["nombre_empresa"] = "Empresa xxx-xxx";
 		$data["nit"] = $factura->doc;

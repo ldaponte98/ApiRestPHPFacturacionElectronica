@@ -36,11 +36,15 @@
 			$mes = $_GET['mes']; // Es necesario recibir este campo por get
 			$id_compania = $_GET['id_compania']; // Es necesario recibir este campo por get
 			$ano = $_GET['ano']; // Es necesario recibir este campo por get
-			echo $facturaController->Enviar($id, $mes, $id_compania, $ano);
+			header('Content-Type: application/json');
+			echo json_encode($facturaController->Enviar($id, $mes, $id_compania, $ano));
 			break;
 		case 'pdf_factura':
 			$id = $_GET['id']; // Es necesario recibir este campo por get
-			echo $facturaController->PDFFactura($id);
+			$mes = $_GET['mes']; // Es necesario recibir este campo por get
+			$id_compania = $_GET['id_compania']; // Es necesario recibir este campo por get
+			$ano = $_GET['ano']; // Es necesario recibir este campo por get
+			echo $facturaController->PDFFactura($id, $mes, $id_compania, $ano);
 			break;
 		case 'base64':
 			//$data = $_POST['documento']; 

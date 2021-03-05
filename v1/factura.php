@@ -27,18 +27,25 @@
 			if($factura){
 				$message = "bien";
 				$data = $this->XMLFactura($factura, $id_compania);
-				return $data;
+
 				$data = base64_encode($data);
 				$this->HTTP->content_type = "text/plain";
 				$this->HTTP->header_extra = "efacturaAuthorizationToken : ".$this->CONFIG->software_token;
-				$message = $this->HTTP->post($this->CONFIG->routes->enviar_documento, $data);
+				$request = new Http();
+				$request->content_type = "text/plain";
+				$request->header_extra = "efacturaAuthorizationToken : ".$this->CONFIG->software_token;
+
+				$data = '"'.$data.'"';
+				$message = $request->post($this->CONFIG->routes->enviar_documento, $data);
+
 			}else{
 				$message = "Esta factura no existe";
 			}
 			return [
-				'error' => $error,
-				'message' => $message,
-				'data' => $data
+				//'error' => $error,
+				'message' => json_decode($message),
+				'error_http' => $request->error,
+				//'data' => $data
 			];
 		}
 
@@ -65,10 +72,17 @@
 			$message = "";
 			$this->DATABASE_COMPANY = "apge_".$id_compania."_".$ano;
 			$DB = new DB($this->DATABASE_COMPANY);
-			$factura = $DB->findBy('facturas'+$mes,'doc', $id_factura);
+			$factura = $DB->findBy('facturas'.$mes,'doc', $id_factura);
 
+			$DB_GENERAL = new DB($this->CONFIG->name_database_general);
+			$company_params = $DB_GENERAL->findBy("params_cadena",'codcompa', $id_company);
+			$company = $DB_GENERAL->findBy("companias",'codcompa', $id_company);
+			$data_company = (object) [
+				'params' => $company_params,
+				'data' => $company
+			];
 			if($factura){
-				return $this->PDF->Factura($factura);
+				return $this->PDF->Factura($factura, $data_company);
 			}else{
 				$message = "Esta factura no existe";
 			}

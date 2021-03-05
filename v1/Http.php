@@ -6,6 +6,7 @@
 		public $content_type = "application/json";
 		public $accept = "application/json";
         public $header_extra = "";
+        public $error = false;
 		
 		public function get($url)
 		{
@@ -17,6 +18,7 @@
                 ],
                 "http" => [
                     "method" => "GET",
+                    "ignore_errors" => true,
                     "header" => "Authorization: ".$this->authorization."\r\n"."Content-type: ".$this->content_type."\r\n"."Accept: ".$this->accept."\r\n".$this->header_extra,
                 ]
             ]);
@@ -36,13 +38,23 @@
                 ],
                 "http" => [
                     "method" => "POST",
+                    "ignore_errors" => true,
                     "header" => "Content-Type: ".$this->content_type."\r\n".$this->header_extra,
                     "content" => $data
                 ]
             ]);
 
             $response = file_get_contents($url, false, $context);
-            $response = json_decode($response);
+            $status_line = $http_response_header[0];
+
+            preg_match('{HTTP\/\S*\s(\d{3})}', $status_line, $match);
+
+            $status = $match[1];
+
+            if ($status !== "200") $this->error = true;
+                       
+            
+            //$response = json_decode($response);
             return $response;
 		}
 	
